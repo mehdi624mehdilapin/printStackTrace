@@ -1,0 +1,18 @@
+version: "3"
+services:
+        api:
+            container_name: servlet
+            restart: always
+            build: .
+            ports:
+                - 1000:8080
+            links:
+                - db
+            
+        db:
+            container_name: mysql
+            image: mysql
+            ports: 
+                - 3306:3306
+            environment:
+                MYSQL_ROOT_PASSWORD: "uvmxu624GJK6DXMS@" 
