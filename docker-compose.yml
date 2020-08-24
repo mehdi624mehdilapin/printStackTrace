@@ -6,8 +6,9 @@ services:
             build: .
             ports:
                 - 1000:8080
-            links:
+            depends_on:
                 - db
+            entrypoint: ["./entry-point.sh"]    
             
         db:
             container_name: mysql
