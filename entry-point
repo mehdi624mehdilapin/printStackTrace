@@ -1,0 +1,25 @@
+#! /bin/sh
+#waiting until the database connect
+   maxcounter=100
+   counter=0
+
+
+   while ! mysql -u "root" -p"uvmxu624GJK6DXMS@" -h "mysql" -e "show databases;" > /dev/all 2>&1; do
+
+	  
+	   sleep 10
+
+	   counter=`expr $counter + 1`
+
+	   echo $counter 
+
+	  if [ $counter -gt $maxcounter ]; then
+
+		   >&2 "we have been waiting for too long; failing" 
+
+		   exit 1
+
+	   fi;
+
+   done
+   exec /usr/local/tomcat/bin/catalina.sh run   

@@ -7,13 +7,15 @@ services:
             ports:
                 - 1000:8080
             depends_on:
-                - db
-            entrypoint: ["./entry-point.sh"]    
-            
+                - db 
+   
+            entrypoint: ["./entry-point"]
         db:
             container_name: mysql
             image: mysql
+            volumes:
+                - "/home/mehdilapin/mysql.conf.d:/etc/mysql/conf.d"
             ports: 
-                - 3306:3306
+                - 3307:3306
             environment:
                 MYSQL_ROOT_PASSWORD: "uvmxu624GJK6DXMS@" 
